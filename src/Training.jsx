@@ -6,7 +6,15 @@ const Training = ({ data = [], handleDeleteItem }) => {
   }
 
   const dataSorted = data.sort(function (a, b) {
-    return new Date(b.date) - new Date(a.date);
+    const aDay = a.date.slice(0, 2);
+    const aMonth = a.date.slice(3, 5);
+    const aYear = a.date.slice(6);
+    const aDate = aYear + '-' + aMonth + '-' + aDay;
+    const bDay = b.date.slice(0, 2);
+    const bMonth = b.date.slice(3, 5);
+    const bYear = b.date.slice(6);
+    const bDate = bYear + '-' + bMonth + '-' + bDay;
+    return new Date(bDate) - new Date(aDate);
   });
 
   const tableTraining = dataSorted.map((item, index) => {
